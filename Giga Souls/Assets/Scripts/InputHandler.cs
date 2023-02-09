@@ -20,12 +20,14 @@ namespace Ken
 
         public bool rollFlag;
         public bool sprintFlag;
+        public bool comboFlag;
         public float rollInputTimer;
         public bool isInteracting;
 
         PlayerControls inputActions;
         PlayerAttacker playerAttacker;
         PlayerInventory playerInventory;
+        PlayerManager playerManager;
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -33,7 +35,8 @@ namespace Ken
         private void Awake()
         {
             playerAttacker= GetComponent<PlayerAttacker>();
-            playerInventory= GetComponent<PlayerInventory>();   
+            playerInventory= GetComponent<PlayerInventory>();
+            playerManager = GetComponent<PlayerManager>();
         }
 
 
@@ -91,12 +94,26 @@ namespace Ken
             inputActions.PlayerActions.RB.performed += i => rb_Input = true;
             inputActions.PlayerActions.RT.performed += i => rt_Input = true;
 
-            // rb robi praworeczne bronie
+            // rb robi praworeczne bronie lekki attak
             if (rb_Input)
             {
+                if (playerManager.canDoCombo)
+                {
+                    comboFlag= true;
+                    playerAttacker.HandleWeaponCombo(playerInventory.rightWeapon);
+                    comboFlag = false;
+                }
+                else
+                {
+                    if (playerManager.isInteracting)
+                        return;
+                    if (playerManager.canDoCombo)
+                        return;
+                    playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
 
-                playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+                }
             }
+            //rt ciezki atak
             if (rt_Input)
             {
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);

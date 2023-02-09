@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,7 @@ namespace Ken
         public bool isSprinting;
         public bool isInAir;
         public bool isGrounded;
+        public bool canDoCombo;
 
         private void Awake()
         {
@@ -40,6 +42,7 @@ namespace Ken
         {
             float delta = Time.deltaTime;            
             isInteracting = anim.GetBool("isInteracting");
+            canDoCombo = anim.GetBool("canDoCombo");
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleMovement(delta);
