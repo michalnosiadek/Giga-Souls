@@ -37,13 +37,14 @@ namespace Ken {
         public void LoadWeaponOnSlot (WeaponItem weaponItem, bool isLeft)
         {
             if (isLeft)
+
             {
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamageCollider();
                 #region Left Handle Weapon Idle Animations
                 if (weaponItem != null)
                 {
-                    animator.CrossFade(weaponItem.Left_Hand_Idle, 0.2f) ;
+                    animator.CrossFade(weaponItem.LeftHandIdle, 0.2f) ;
                 }
                 else
                 {
@@ -59,7 +60,7 @@ namespace Ken {
 
                 if (weaponItem != null)
                 {
-                    animator.CrossFade(weaponItem.Right_Hand_Idle, 0.2f);
+                    animator.CrossFade(weaponItem.RightHandIdle, 0.2f);
                 }
                 else
                 {

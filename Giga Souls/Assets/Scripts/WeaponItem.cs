@@ -11,14 +11,14 @@ namespace Ken
         public bool isUnarmed;
 
         [Header("Idle Animations")]
-        public string Right_Hand_Idle;
-        public string Left_Hand_Idle;
+        public string RightHandIdle;
+        public string LeftHandIdle;
 
         [Header("One Handed Attack Animations")]
         // TODO: wyjebac underscore OhHeavyAttack
-        public string OH_Light_Attack_1;
-        public string OH_Light_Attack_2;
-        public string OH_Heavy_Attack_1;
+        public string OhLightAttack;
+        public string OhLightAttack1;
+        public string OhHeavyAttack;
 
 
     }

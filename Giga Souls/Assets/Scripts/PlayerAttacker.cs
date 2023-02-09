@@ -21,20 +21,20 @@ namespace Ken
             if (inputHandler.comboFlag)
             {
                 animatorHandler.anim.SetBool("canDoCombo", false);
-                if (lastAttack == weapon.OH_Light_Attack_1)
+                if (lastAttack == weapon.OhLightAttack)
                 {
-                    animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_2, true);
+                    animatorHandler.PlayTargetAnimation(weapon.OhLightAttack1, true);
                 }
             }
         }
         public void HandleLightAttack(WeaponItem weapon)
         {
-            animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
-            lastAttack = weapon.OH_Light_Attack_1;
+            animatorHandler.PlayTargetAnimation(weapon.OhLightAttack, true);
+            lastAttack = weapon.OhLightAttack;
         }
         public void HandleHeavyAttack(WeaponItem weapon)
         {
-            animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
+            animatorHandler.PlayTargetAnimation(weapon.OhHeavyAttack, true);
         }
             
     }

@@ -37,12 +37,12 @@ namespace Ken
 
             healthbar.SetCurrentHealth(currentHealth);
 
-            animatorHandler.PlayTargetAnimation("Damage_01", true);
+            animatorHandler.PlayTargetAnimation("Damage", true);
 
             if(currentHealth <= 0)
             {
                 currentHealth = 0;
-                animatorHandler.PlayTargetAnimation("Dead_01", true);
+                animatorHandler.PlayTargetAnimation("Dead", true);
                 //ded
             }
         }
