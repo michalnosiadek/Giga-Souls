@@ -156,6 +156,7 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1001 &232374898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -222,6 +223,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 78401e281f75b3341b2ada3084cfd12f, type: 3}
   m_PrefabInstance: {fileID: 232374898}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of 982c632 (test 3 enemies)
 =======
 >>>>>>> parent of 982c632 (test 3 enemies)
 --- !u!1 &255878221
@@ -525,8 +528,11 @@ Transform:
   m_Children:
   - {fileID: 542155215}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 232374899}
   - {fileID: 358452139}
+=======
+>>>>>>> parent of 982c632 (test 3 enemies)
 =======
 >>>>>>> parent of 982c632 (test 3 enemies)
   m_Father: {fileID: 0}
