@@ -51,7 +51,6 @@ namespace Ken {
                     animator.CrossFade("Left Arm Empty", 0.2f);
                 }
                 #endregion
-
             }
             else
             {
