@@ -212,7 +212,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Right_Arm_Idle_01
+  m_Name: RightHandIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -660,7 +660,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Left_Arm_Idle_01
+  m_Name: LeftHandIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
