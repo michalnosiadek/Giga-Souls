@@ -67,6 +67,10 @@ namespace Ken
             inputHandler.sprintFlag = false;
             inputHandler.rb_Input = false;
             inputHandler.rt_Input= false;
+            inputHandler.dPadUp= false;
+            inputHandler.dPadDown= false;
+            inputHandler.dPadLeft= false;
+            inputHandler.dPadRight= false;
 
             if(isInAir)
             {

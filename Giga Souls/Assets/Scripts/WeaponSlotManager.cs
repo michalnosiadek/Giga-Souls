@@ -13,12 +13,15 @@ namespace Ken {
         DamageCollider rightHandDamageCollider;
 
         Animator animator;
+
+        QuickSlotsUi quickSlotsUi;
        
 
         private void Awake()
         {
 
             animator = GetComponent<Animator>();
+            quickSlotsUi = FindObjectOfType<QuickSlotsUi>();    
 
             WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
             foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
@@ -41,6 +44,7 @@ namespace Ken {
             {
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamageCollider();
+                quickSlotsUi.UpdateWeaponQuickSlotsUi(true, weaponItem);
                 #region Left Handle Weapon Idle Animations
                 if (weaponItem != null)
                 {
@@ -51,11 +55,13 @@ namespace Ken {
                     animator.CrossFade("Left Arm Empty", 0.2f);
                 }
                 #endregion
+
             }
             else
             {
                 rightHandSlot.LoadWeaponModel(weaponItem);
                 LoadRightWewaponDamageCollider();
+                quickSlotsUi.UpdateWeaponQuickSlotsUi(false, weaponItem);
                 #region Handle Right Weapon Idle Animations
 
                 if (weaponItem != null)

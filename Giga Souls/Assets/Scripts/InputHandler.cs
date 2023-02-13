@@ -17,6 +17,10 @@ namespace Ken
         public bool b_Input;
         public bool rb_Input;
         public bool rt_Input;
+        public bool dPadUp;
+        public bool dPadDown;
+        public bool dPadLeft;
+        public bool dPadRight;
 
         public bool rollFlag;
         public bool sprintFlag;
@@ -59,6 +63,7 @@ namespace Ken
             MoveInput(delta);
             HandleRollingInput(delta);
             HandleAttackInput(delta);
+            HandleQuickSlotsInput();
         }
         private void MoveInput(float delta)
         {
@@ -119,6 +124,21 @@ namespace Ken
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
             }
        
+        }
+
+        private void HandleQuickSlotsInput()
+        {
+            inputActions.Inventory.DPadRight.performed += i => dPadRight = true;
+            inputActions.Inventory.DPadLeft.performed += i => dPadLeft = true;
+
+            if (dPadRight)
+            {
+                playerInventory.ChangeRightWeapon();
+            }
+            else if (dPadLeft)
+            {
+                playerInventory.ChangeLeftWeapon();
+            }
         }
     }
 
