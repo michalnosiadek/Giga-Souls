@@ -8,11 +8,13 @@ namespace Ken
     {
         AnimatorHandler animatorHandler;
         InputHandler inputHandler;
+        WeaponSlotManager weaponSlotManager;
         public string lastAttack;
 
         private void Awake()
         {
             animatorHandler = GetComponentInChildren<AnimatorHandler>();
+            weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
             inputHandler = GetComponent<InputHandler>();
         }
 
@@ -29,12 +31,16 @@ namespace Ken
         }
         public void HandleLightAttack(WeaponItem weapon)
         {
+            weaponSlotManager.attackingWeapon = weapon;
             animatorHandler.PlayTargetAnimation(weapon.OhLightAttack, true);
             lastAttack = weapon.OhLightAttack;
         }
         public void HandleHeavyAttack(WeaponItem weapon)
         {
+            weaponSlotManager.attackingWeapon = weapon;
             animatorHandler.PlayTargetAnimation(weapon.OhHeavyAttack, true);
+            lastAttack = weapon.OhHeavyAttack;
+
         }
             
     }

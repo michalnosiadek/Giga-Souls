@@ -20,6 +20,9 @@ namespace Ken
         public string OhLightAttack1;
         public string OhHeavyAttack;
 
-
+        [Header("Stamina Costs")]
+        public int baseStamina;
+        public float lightAttackMultiplier;
+        public float heavyAttackMultiplier;
     }
 }

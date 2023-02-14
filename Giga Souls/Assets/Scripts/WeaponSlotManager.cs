@@ -6,6 +6,9 @@ using UnityEngine;
 namespace Ken {
     public class WeaponSlotManager : MonoBehaviour
     {
+        public WeaponItem attackingWeapon;
+
+
         WeaponHolderSlot leftHandSlot;
         WeaponHolderSlot rightHandSlot;
 
@@ -15,6 +18,8 @@ namespace Ken {
         Animator animator;
 
         QuickSlotsUi quickSlotsUi;
+
+        PlayerStats playerStats;
        
 
         private void Awake()
@@ -22,6 +27,7 @@ namespace Ken {
 
             animator = GetComponent<Animator>();
             quickSlotsUi = FindObjectOfType<QuickSlotsUi>();    
+            playerStats = GetComponentInParent<PlayerStats>();
 
             WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
             foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
@@ -102,6 +108,18 @@ namespace Ken {
         public void CloseLeftHandDamageCollider()
         {
             leftHandDamageCollider.DisableDamageCollider();
+        }
+        #endregion
+
+        #region Handle Weapon's Stamina Drainage
+        public void DrainStaminaLightAttack()
+        {
+            playerStats.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.lightAttackMultiplier));
+        }
+
+        public void DrainStaminaHeavyAttack()
+        {
+            playerStats.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.heavyAttackMultiplier));
         }
         #endregion
     }
