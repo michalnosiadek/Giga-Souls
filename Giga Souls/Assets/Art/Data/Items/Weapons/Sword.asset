@@ -21,3 +21,6 @@ MonoBehaviour:
   OhLightAttack: OhLightAttack
   OhLightAttack1: OhLightAttack1
   OhHeavyAttack: OhHeavyAttack
+  baseStamina: 20
+  lightAttackMultiplier: 1
+  heavyAttackSpeed: 2

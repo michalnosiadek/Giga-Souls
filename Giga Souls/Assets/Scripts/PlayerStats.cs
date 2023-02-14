@@ -10,11 +10,17 @@ namespace Ken
         public int maxHealth;
         public int currentHealth;
 
+        public int staminaLevel = 10;
+        public int maxStamina;
+        public int currentStamina;
+
         public HealthBar healthbar;
+        public StaminaBar staminaBar;
         AnimatorHandler animatorHandler;
 
         private void Awake()
         {
+            staminaBar = FindObjectOfType<StaminaBar>
             animatorHandler = GetComponentInChildren<AnimatorHandler>();    
         }
 
@@ -23,6 +29,10 @@ namespace Ken
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
             healthbar.SetMaxHealth(maxHealth);
+            healthbar.SetCurrentHealth(currentHealth);
+
+            maxStamina = SetMaxStaminaFromStaminahLevel();
+            currentStamina = maxStamina;    
         }
 
         private int SetMaxHealthFromHealthLevel()
@@ -30,6 +40,13 @@ namespace Ken
             maxHealth = healthLevel * 10;
             return maxHealth;
         }
+
+        private int SetMaxStaminaFromStaminahLevel()
+        {
+            maxStamina = staminaLevel * 10;
+            return maxStamina;
+        }
+
 
         public void TakeDamage(int damage) //dmg metoda na dmg
         {
@@ -45,6 +62,12 @@ namespace Ken
                 animatorHandler.PlayTargetAnimation("Dead", true);
                 //ded
             }
+        }
+
+        public void TakeStaminaDamage(int damage)
+        {
+            currentStamina = currentStamina - damage;
+            // Set bar
         }
     }
 }
