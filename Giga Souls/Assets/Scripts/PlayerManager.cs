@@ -15,6 +15,7 @@ namespace Ken
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
+        public GameObject itemInteractableGameObject;
 
 
 
@@ -121,6 +122,10 @@ namespace Ken
                 if(interactableUIGameObject != null)
                 {
                     interactableUIGameObject.SetActive(false);
+                }
+                if (itemInteractableGameObject != null && inputHandler.a_Input)
+                {
+                    itemInteractableGameObject.SetActive(false);
                 }
             }
         }
