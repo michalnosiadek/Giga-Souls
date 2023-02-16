@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Windows;
 
@@ -15,6 +16,7 @@ namespace Ken
         public float mouseY;
 
         public bool b_Input;
+        public bool a_Input;
         public bool rb_Input;
         public bool rt_Input;
         public bool dPadUp;
@@ -64,6 +66,7 @@ namespace Ken
             HandleRollingInput(delta);
             HandleAttackInput(delta);
             HandleQuickSlotsInput();
+            HandleInteractingButtonInput();
         }
         private void MoveInput(float delta)
         {
@@ -155,6 +158,13 @@ namespace Ken
             {
                 playerInventory.ChangeLeftWeapon();
             }
+        }
+
+        private void HandleInteractingButtonInput()
+        {
+            inputActions.PlayerActions.Interact.performed += i => a_Input = true;
+
+
         }
     }
 

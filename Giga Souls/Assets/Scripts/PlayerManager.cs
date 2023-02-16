@@ -48,6 +48,8 @@ namespace Ken
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleRollingAndSprinting(delta);
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+
+            CheckForInteractableObject();
         }
 
         private void FixedUpdate()
@@ -71,10 +73,36 @@ namespace Ken
             inputHandler.dPadDown= false;
             inputHandler.dPadLeft= false;
             inputHandler.dPadRight= false;
+            inputHandler.a_Input = false;
 
             if(isInAir)
             {
                 playerLocomotion.inAirTimer = playerLocomotion.inAirTimer + Time.deltaTime;
+            }
+        }
+
+        public void CheckForInteractableObject()
+        {
+            RaycastHit hit;
+
+            if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 1f, cameraHandler.ignoreLayers))
+            {
+                if(hit.collider.tag == "Interactable")
+                {
+                    Interactable interactableObject = hit.collider.GetComponent<Interactable>();
+
+                    if(interactableObject != null)
+                    {
+                        string interactableText = interactableObject.interactableText;
+                        //ustawia tekst UI na tekst interaktywnego objektu
+                        // ustawic tekst pop up na true
+
+                        if (inputHandler.a_Input)
+                        {
+                            hit.collider.GetComponent<Interactable>().Interact(this);
+                        }
+                    }
+                }
             }
         }
 
