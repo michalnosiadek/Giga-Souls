@@ -12,7 +12,14 @@ namespace Ken
         Animator anim;
         CameraHandler cameraHandler;
         PlayerLocomotion playerLocomotion;
-        
+
+        InteractableUI interactableUI;
+        public GameObject interactableUIGameObject;
+
+
+
+
+
         public bool isInteracting;
         [Header("Player Flags")]
         public bool isSprinting;
@@ -35,6 +42,9 @@ namespace Ken
             inputHandler = GetComponent<InputHandler>();
             anim = GetComponentInChildren<Animator>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
+            interactableUI = FindObjectOfType<InteractableUI>();
+            
+            
         }
 
         // Update is called once per frame
@@ -94,6 +104,8 @@ namespace Ken
                     if(interactableObject != null)
                     {
                         string interactableText = interactableObject.interactableText;
+                        interactableUI.interactableText.text = interactableText;
+                        interactableUIGameObject.SetActive(true);
                         //ustawia tekst UI na tekst interaktywnego objektu
                         // ustawic tekst pop up na true
 
@@ -102,6 +114,13 @@ namespace Ken
                             hit.collider.GetComponent<Interactable>().Interact(this);
                         }
                     }
+                }
+            }
+            else
+            {
+                if(interactableUIGameObject != null)
+                {
+                    interactableUIGameObject.SetActive(false);
                 }
             }
         }
