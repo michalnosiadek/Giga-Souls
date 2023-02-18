@@ -54,11 +54,13 @@ namespace Ken
             float delta = Time.deltaTime;            
             isInteracting = anim.GetBool("isInteracting");
             canDoCombo = anim.GetBool("canDoCombo");
+            anim.SetBool("IsInAir", isInAir);
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleRollingAndSprinting(delta);
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+            playerLocomotion.HandleJumping();
 
             CheckForInteractableObject();
         }
@@ -85,6 +87,8 @@ namespace Ken
             inputHandler.dPadLeft= false;
             inputHandler.dPadRight= false;
             inputHandler.a_Input = false;
+            inputHandler.jumpInput= false;
+            inputHandler.inventoryInput= false;
 
             if(isInAir)
             {

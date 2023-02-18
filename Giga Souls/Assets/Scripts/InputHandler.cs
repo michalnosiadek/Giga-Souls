@@ -19,6 +19,9 @@ namespace Ken
         public bool a_Input;
         public bool rb_Input;
         public bool rt_Input;
+        public bool jumpInput;
+        public bool inventoryInput;
+
         public bool dPadUp;
         public bool dPadDown;
         public bool dPadLeft;
@@ -27,6 +30,7 @@ namespace Ken
         public bool rollFlag;
         public bool sprintFlag;
         public bool comboFlag;
+        public bool inventoryFlag;
         public float rollInputTimer;
         public bool isInteracting;
 
@@ -34,6 +38,7 @@ namespace Ken
         PlayerAttacker playerAttacker;
         PlayerInventory playerInventory;
         PlayerManager playerManager;
+        UIManager uIManager;
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -43,6 +48,7 @@ namespace Ken
             playerAttacker= GetComponent<PlayerAttacker>();
             playerInventory= GetComponent<PlayerInventory>();
             playerManager = GetComponent<PlayerManager>();
+            uIManager = FindObjectOfType<UIManager>();
         }
 
 
@@ -67,6 +73,8 @@ namespace Ken
             HandleAttackInput(delta);
             HandleQuickSlotsInput();
             HandleInteractingButtonInput();
+            HandleJumpInput();
+            HandleInventoryInput();
         }
         private void MoveInput(float delta)
         {
@@ -165,6 +173,29 @@ namespace Ken
             inputActions.PlayerActions.Interact.performed += i => a_Input = true;
 
 
+        }
+
+        private void HandleJumpInput()
+        {
+            inputActions.PlayerMovement.Jump.performed += i => jumpInput = true;
+        }
+
+        private void HandleInventoryInput()
+        {
+            inputActions.PlayerActions.Inventory.performed += i => inventoryInput = true;
+            if (inventoryInput)
+            {
+                inventoryFlag = !inventoryFlag;
+
+                if (inventoryFlag)
+                {
+                    uIManager.OpenSelectWindow();
+                }
+                else
+                {
+                    uIManager.CloseSelectWindow();
+                }
+            }
         }
     }
 
