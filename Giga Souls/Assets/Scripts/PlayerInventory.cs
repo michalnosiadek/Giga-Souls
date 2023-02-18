@@ -31,8 +31,8 @@ namespace Ken
         {
             rightWeapon = unarmedWeapon;
             leftWeapon = unarmedWeapon;
-
-/*            rightWeapon = weaponInRightHandSlots[currentRightWeaponIndex];
+/*
+            rightWeapon = weaponInRightHandSlots[currentRightWeaponIndex];
             leftWeapon = weaponInLeftHandSlots[currentLeftWeaponIndex];
             weaponSlotManager.LoadWeaponOnSlot(rightWeapon, false);
             weaponSlotManager.LoadWeaponOnSlot(leftWeapon, true);
