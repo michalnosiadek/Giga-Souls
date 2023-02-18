@@ -59,9 +59,14 @@ namespace Ken
                 inputActions = new PlayerControls();
                 inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
                 inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
-                b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
                 inputActions.PlayerActions.RB.performed += i => rb_Input = true;
                 inputActions.PlayerActions.RT.performed += i => rt_Input = true;
+                inputActions.Inventory.DPadRight.performed += i => dPadRight = true;
+                inputActions.Inventory.DPadLeft.performed += i => dPadLeft = true;
+                inputActions.PlayerActions.Interact.performed += i => a_Input = true;
+                inputActions.PlayerMovement.Jump.performed += i => jumpInput = true;
+                inputActions.PlayerActions.Inventory.performed += i => inventoryInput = true;
+
 
             }
             inputActions.Enable();
@@ -76,8 +81,6 @@ namespace Ken
             HandleRollingInput(delta);
             HandleAttackInput(delta);
             HandleQuickSlotsInput();
-            HandleInteractingButtonInput();
-            HandleJumpInput();
             HandleInventoryInput();
         }
         private void MoveInput(float delta)
@@ -91,10 +94,12 @@ namespace Ken
 
         private void HandleRollingInput(float delta)
         {
+            b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
+            sprintFlag = b_Input;
+
             if (b_Input)
             {
                 rollInputTimer += delta;
-                sprintFlag = true;
             }
             else
             {
@@ -157,8 +162,7 @@ namespace Ken
 
         private void HandleQuickSlotsInput()
         {
-            inputActions.Inventory.DPadRight.performed += i => dPadRight = true;
-            inputActions.Inventory.DPadLeft.performed += i => dPadLeft = true;
+            
 
             if (dPadRight)
             {
@@ -170,21 +174,10 @@ namespace Ken
             }
         }
 
-        private void HandleInteractingButtonInput()
-        {
-            inputActions.PlayerActions.Interact.performed += i => a_Input = true;
-
-
-        }
-
-        private void HandleJumpInput()
-        {
-            inputActions.PlayerMovement.Jump.performed += i => jumpInput = true;
-        }
+ 
 
         private void HandleInventoryInput()
         {
-            inputActions.PlayerActions.Inventory.performed += i => inventoryInput = true;
             if (inventoryInput)
             {
                 inventoryFlag = !inventoryFlag;
