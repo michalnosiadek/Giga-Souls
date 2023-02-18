@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace Ken
 {
-    public class PlayerManager : MonoBehaviour
+    public class PlayerManager : CharacterManager
     {
         InputHandler inputHandler;
         Animator anim;
