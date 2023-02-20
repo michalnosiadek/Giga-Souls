@@ -1,0 +1,4 @@
+repository "GigaSouls@local"
+  path "/"
+    br "/main"
+    co "/main"

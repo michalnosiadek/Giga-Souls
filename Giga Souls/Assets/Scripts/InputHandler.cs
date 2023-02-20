@@ -22,6 +22,8 @@ namespace Ken
         public bool jumpInput;
         public bool inventoryInput;
         public bool lockOnInput;
+        public bool rightStickRightInput;
+        public bool rightStickLeftInput;
 
         public bool dPadUp;
         public bool dPadDown;
@@ -71,6 +73,8 @@ namespace Ken
                 inputActions.PlayerMovement.Jump.performed += i => jumpInput = true;
                 inputActions.PlayerActions.Inventory.performed += i => inventoryInput = true;
                 inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
+                inputActions.PlayerMovement.LockOnTargetRight.performed += i => rightStickRightInput = true;
+                inputActions.PlayerMovement.LockOnTargetLeft.performed += i => rightStickLeftInput = true;
 
             }
             inputActions.Enable();
@@ -81,14 +85,14 @@ namespace Ken
         }
         public void TickInput(float delta)
         {
-            MoveInput(delta);
+            HandleMoveInput(delta);
             HandleRollingInput(delta);
             HandleAttackInput(delta);
             HandleQuickSlotsInput();
             HandleInventoryInput();
             HandleLockOnInput();
         }
-        private void MoveInput(float delta)
+        private void HandleMoveInput(float delta)
         {
             horizontal = movementInput.x;
             vertical = movementInput.y;
@@ -206,9 +210,9 @@ namespace Ken
         {
             if (lockOnInput && lockOnFlag == false)
             {
-                cameraHandler.ClearLockOnTargets();
+                //cameraHandler.ClearLockOnTargets();
                 lockOnInput = false;
-                lockOnFlag = true;
+                //lockOnFlag = true;
                 cameraHandler.HandleLockOn();
                 if(cameraHandler.nearestLockOnTarget != null)
                 {
@@ -222,6 +226,28 @@ namespace Ken
                 lockOnFlag = false;
                 cameraHandler.ClearLockOnTargets();
             }
+
+            if(lockOnFlag && rightStickLeftInput)
+            {
+                rightStickLeftInput = false;
+                cameraHandler.HandleLockOn();
+                if (cameraHandler.leftLockTarget != null)
+                {
+                    cameraHandler.currentLockOnTarget = cameraHandler.leftLockTarget;
+                }
+            }
+
+            if (lockOnFlag && rightStickRightInput)
+            {
+                rightStickRightInput = false;
+                cameraHandler.HandleLockOn();
+                if (cameraHandler.rightLockTarget != null)
+                {
+                    cameraHandler.currentLockOnTarget= cameraHandler.rightLockTarget;
+                }
+            }
+
+            cameraHandler.SetCameraHeight();
         }
     }
 

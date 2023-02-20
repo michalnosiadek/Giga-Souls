@@ -31,6 +31,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Lock On Target Left",
+                    "type": "Button",
+                    "id": "cfea2cfe-8fec-449a-bb5a-bc48f8f4ee58",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Lock On Target Right",
+                    "type": "Button",
+                    "id": "7b9e0eee-52e3-4672-9ca5-4b39c82bdb8c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -119,6 +137,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9610b8c6-38ea-44d8-8eee-ad15602f3d70",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lock On Target Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c6147d7-eba3-4dc4-b819-3b587ca56338",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "Tap",
+                    "processors": "AxisDeadzone",
+                    "groups": "",
+                    "action": "Lock On Target Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e5c6b7a-d2c5-4319-a943-078d77a71425",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lock On Target Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae9e8820-83d2-42b1-bc74-7f680ca65060",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "Tap",
+                    "processors": "AxisDeadzone",
+                    "groups": "",
+                    "action": "Lock On Target Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -390,34 +452,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "D-Pad Right",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "New action map",
-            "id": "bf3ef84b-8f45-4970-8014-9306c3593ceb",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "bb6b975b-af20-448c-aa65-34b9bf948018",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "b396cdb0-6e24-47d8-8527-b146f90c048c",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
